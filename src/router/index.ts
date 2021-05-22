@@ -10,14 +10,29 @@ const routes: Array<RouteConfig> = [
     name: "Home",
     component: Home,
   },
+  // {
+  //   path: "/about",
+  //   name: "About",
+  //   // route level code-splitting
+  //   // this generates a separate chunk (about.[hash].js) for this route
+  //   // which is lazy-loaded when the route is visited.
+  //   component: () =>
+  //     import(/* webpackChunkName: "about" */ "../views/About.vue"),
+  // },
   {
-    path: "/about",
-    name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue"),
+    path: "/games/memory-ascending/:numberOfCards/intro",
+    name: "MemoryAscendingIntro",
+    component: () => import("../views/MemoryAscendingIntro.vue"),
+  },
+  {
+    path: "/games/memory-ascending/:numberOfCards/cards",
+    name: "MemoryAscendingCards",
+    component: () => import("../views/MemoryAscendingCards.vue"),
+  },
+  {
+    path: "/games/memory-ascending/:numberOfCards/challenge",
+    name: "MemoryAscendingChallenge",
+    component: () => import("../views/MemoryAscendingChallenge.vue"),
   },
 ];
 
