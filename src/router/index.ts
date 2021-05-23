@@ -34,6 +34,11 @@ const routes: Array<RouteConfig> = [
     name: "MemoryAscendingChallenge",
     component: () => import("../views/MemoryAscendingChallenge.vue"),
   },
+  {
+    path: "/games/memory-ascending/success",
+    name: "Success",
+    component: () => import("../views/Success.vue"),
+  },
 ];
 
 const router = new VueRouter({

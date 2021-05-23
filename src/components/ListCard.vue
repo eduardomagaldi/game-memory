@@ -1,36 +1,30 @@
 <template>
   <div class="ListCard">
-    <!-- <div class="card" :class="flipped ? 'card--flipped' : ''"> -->
-    <!-- <div class="inner">
-      <button class="front face" @click="onClick(index)">
-        {{ card.indexSelected }}
-      </button>
-      <div class="back face"></div>
-    </div> -->
-    <!-- </div> -->
+    <div class="wrapper__inner">
+      <div
+        class="flip-card"
+        v-for="(card, index) in cards"
+        :key="index"
+        :class="flipped ? 'flip-card--flipped' : ''"
+      >
+        <div class="flip-card-inner">
+          <div class="flip-card-front" @click="onClick(index)">
+            {{ card.indexSelected !== undefined ? card.indexSelected + 1 : "" }}
 
-    <div
-      class="flip-card"
-      v-for="(card, index) in cards"
-      :key="index"
-      :class="flipped ? 'flip-card--flipped' : ''"
-    >
-      <div class="flip-card-inner">
-        <div class="flip-card-front" @click="onClick(index)">
-          <!-- <img
-            src="img_avatar.png"
-            alt="Avatar"
-            style="width: 300px; height: 300px"
-          /> -->
-          <!-- <button class="btn btn--select"> -->
-          {{ card.indexSelected }}
-          <!-- </button> -->
-        </div>
-        <div class="flip-card-back">
-          {{ card.value }}
+            <small style="color: grey">{{ card.value }}</small>
+          </div>
+          <div class="flip-card-back">
+            {{ card.value }}
+          </div>
         </div>
       </div>
     </div>
+
+    <span class="error" v-if="fail">
+      Wrong answer :(<br />please try again.
+    </span>
+
+    <button @click="reset()">Reset</button>
   </div>
 </template>
 
@@ -52,6 +46,7 @@ export default class ListCard extends Vue {
     10
   );
   private indexCurr = 0;
+  private fail = false;
 
   created(): boolean {
     if (this.numberOfCards > 12) {
@@ -68,52 +63,52 @@ export default class ListCard extends Vue {
   }
 
   onClick(index: number): void {
-    // console.log("index", index);
-
     const selected: Card = this.cards?.[index];
-
-    // console.log("selected", JSON.stringify(selected));
 
     if (selected.indexSelected === undefined) {
       Vue.set(selected, "indexSelected", this.indexCurr);
       this.indexCurr++;
-
-      // console.log("selected", JSON.stringify(selected));
-      // return (e: MouseEvent): void => {
-      //   console.log("e", e);
-      // };
     }
 
     const complete = this.cards.filter((card: Card) => {
       return card.indexSelected !== undefined;
     });
 
-    console.log("complete", complete.length);
-
     if (complete.length === this.numberOfCards) {
       console.log("showResult");
       this.showResult();
     }
-
-    // console.log("", e);
-    // // if (this.numberOfCards > 12) {
-    // //   throw new Error();
-    // // }
-    // const index = 0;
-
-    // e.target.innerHtml += index;
-
-    // for (let i = 0; i < this.numberOfCards; i++) {
-    //   this.cards.push(Math.round(Math.random() * 100));
-    // }
-
-    // return true;
   }
 
   showResult(): void {
-    const sorted = this.cards.sort(compare);
+    const sorted = this.cards.slice().sort(compare);
+    let result = true;
 
-    console.log("sorted", JSON.stringify(sorted));
+    result = sorted.every((card: Card, index: number) => {
+      console.log("card", JSON.parse(JSON.stringify(card)));
+
+      if (card.indexSelected === index) {
+        return true;
+      }
+
+      return false;
+    });
+
+    if (result) {
+      this.$router.push({
+        name: "Success",
+      });
+    } else {
+      this.fail = true;
+    }
+  }
+
+  reset(): void {
+    this.cards.forEach((card: Card) => {
+      Vue.set(card, "indexSelected", undefined);
+    });
+
+    this.indexCurr = 0;
   }
 }
 
@@ -131,7 +126,7 @@ function compare(a: any, b: any): number {
 </script>
 
 <style scoped lang="scss">
-.ListCard {
+.wrapper__inner {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -177,6 +172,12 @@ function compare(a: any, b: any): number {
   height: 100%;
   -webkit-backface-visibility: hidden; /* Safari */
   backface-visibility: hidden;
+
+  align-items: center;
+  display: flex;
+  justify-content: center;
+
+  font-size: 60px;
 }
 
 /* Style the front side (fallback if image is missing) */

@@ -1,19 +1,14 @@
 <template>
   <div class="about">
-    <h2>Cards</h2>
-
-    <ListCard :flipped="flipped" />
+    <h2>Congratulations, you win!</h2>
 
     <router-link
       :to="{
-        name: 'MemoryAscendingChallenge',
-        params: {
-          numberOfCards,
-        },
+        name: 'Home',
       }"
       :class="'btn--play'"
     >
-      Play -->
+      Start again
     </router-link>
 
     <button class="btn--play" @click="onPlay">Play -></button>
