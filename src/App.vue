@@ -1,11 +1,7 @@
 <template>
   <div id="app">
-    <h1>Memory Game</h1>
-    <a href="/">home</a>
-    <!-- <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div> -->
+    <a href="/"><h1>Lepaya - Memory Game (Ascending)</h1></a>
+
     <router-view />
   </div>
 </template>
@@ -23,7 +19,7 @@
   font-family: "Lato", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  // text-align: center;
+  text-align: center;
   color: #2c3e50;
 }
 

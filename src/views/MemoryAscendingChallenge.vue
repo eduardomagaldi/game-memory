@@ -3,6 +3,8 @@
     <h2>Challenge</h2>
 
     <ListCard :flipped="false" />
+
+    <small>Click on the cards in ascending order.</small>
   </div>
 </template>
 

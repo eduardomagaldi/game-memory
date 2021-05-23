@@ -24,7 +24,7 @@
       Wrong answer :(<br />please try again.
     </span>
 
-    <button @click="reset()">Reset</button>
+    <button v-if="!flipped" @click="reset()">Reset</button>
   </div>
 </template>
 
@@ -188,5 +188,9 @@ function compare(a: Card, b: Card): number {
   background-color: dodgerblue;
   color: white;
   transform: rotateY(180deg);
+}
+
+.error {
+  color: red;
 }
 </style>

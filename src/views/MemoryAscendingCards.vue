@@ -4,17 +4,7 @@
 
     <ListCard :flipped="flipped" />
 
-    <router-link
-      :to="{
-        name: 'MemoryAscendingChallenge',
-        params: {
-          numberOfCards,
-        },
-      }"
-      :class="'btn--play'"
-    >
-      Play -->
-    </router-link>
+    <small>Take your time to memorise the cards, then click Play.</small>
 
     <button class="btn--play" @click="onPlay">Play -></button>
   </div>

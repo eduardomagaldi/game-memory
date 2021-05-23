@@ -1,11 +1,5 @@
 <template>
-  <div class="home">
-    <!-- <img alt="Vue logo" src="../assets/logo.png" /> -->
-    <h1>Lepaya</h1>
-    <h1>Memory Ascending Game</h1>
-
-    <ChooseDifficulty />
-  </div>
+  <ChooseDifficulty />
 </template>
 
 <script>
