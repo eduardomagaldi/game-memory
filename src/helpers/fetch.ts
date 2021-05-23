@@ -12,17 +12,17 @@ export default {
   delete: deleteFetch,
 };
 
-async function get(url: string): Promise<any> {
+async function get(url: string): Promise<void> {
   const response = await fetch(apiUrl + url, { ...getOptions() });
 
   if (handleErrors(response)) {
-    return null;
+    return;
   }
 
   return await parseBody(response);
 }
 
-async function post(url: string, data: any): Promise<any> {
+async function post(url: string, data: Record<symbol, unknown>): Promise<null> {
   const response = await fetch(apiUrl + url, {
     ...getOptions(),
     method: "POST",
