@@ -46,9 +46,9 @@ export default {
     },
   },
   actions: {
-    login: async function (context: Context, query: string): Promise<any> {
-      console.log("login");
-      const data = await fetch.get("/api/login" + query);
+    getCards: async function (context: Context, numberOfCards: number): Promise<any> {
+      const data = await fetch.get(`/api/cards/${numberOfCards}`);
+      console.log("data", data);
       return data;
     },
     logout: async function (): Promise<any> {

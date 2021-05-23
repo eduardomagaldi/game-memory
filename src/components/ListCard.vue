@@ -45,19 +45,20 @@ export default class ListCard extends Vue {
   private indexCurr = 0;
   private fail = false;
 
-  created(): boolean {
-    // console.log("this.$store", this.$store.);
-    this.$store.dispatch("login", this.$route);
+  async created(): Promise<boolean> {
+    this.cards = await this.$store.dispatch("getCards", this.numberOfCards);
+
+    console.log("cards", this.cards);
 
     if (this.numberOfCards > 12) {
       throw new Error();
     }
 
-    for (let i = 0; i < this.numberOfCards; i++) {
-      this.cards.push({
-        value: Math.round(Math.random() * 100),
-      });
-    }
+    // for (let i = 0; i < this.numberOfCards; i++) {
+    //   this.cards.push({
+    //     value:
+    //   });
+    // }
 
     return true;
   }
