@@ -2,11 +2,7 @@
   <div class="about">
     <h2>Cards</h2>
 
-    <!-- {{ cards.length }} -->
-
-    <div v-for="(cardNumber, index) in cards" :key="index" class="card">
-      {{ cardNumber }}
-    </div>
+    <ListCard :flipped="flipped" />
 
     <router-link
       :to="{
@@ -15,51 +11,61 @@
           numberOfCards,
         },
       }"
+      :class="'btn--play'"
     >
-      Go to cards -->
+      Play -->
     </router-link>
+
+    <button class="btn--play" @click="onPlay">Play -></button>
   </div>
 </template>
 
 <script lang="ts">
 // this.$route.params.clientId
 
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Vue } from "vue-property-decorator";
+import ListCard from "@/components/ListCard.vue";
 
-@Component
+@Component({
+  components: {
+    ListCard,
+  },
+})
 export default class MemoryAscending extends Vue {
   // @Prop() private msg!: string;
-
-  private cards: number[] = [];
+  // const clientId: number = this.$route?.params?.numberOfCards;
   private numberOfCards: number = parseInt(
     this.$route?.params?.numberOfCards,
     10
   );
 
-  // const clientId: number = this.$route?.params?.numberOfCards;
+  private flipped = true;
 
-  // numberOfCards: number = parseInt(this.$route?.params?.numberOfCards, 10);
+  public onPlay(e: MouseEvent): void {
+    // console.log("e", e);
+    this.flipped = false;
 
-  created(): boolean {
-    if (this.numberOfCards > 12) {
-      throw new Error();
-    }
+    setTimeout(() => {
+      this.$router.push({
+        name: "MemoryAscendingChallenge",
+        params: { numberOfCards: this.numberOfCards.toString() },
+      });
 
-    for (let i = 0; i < this.numberOfCards; i++) {
-      this.cards.push(Math.round(Math.random() * 100));
-    }
+      // console.log('this.router', );
+      // this.$route?.push({ name: 'user', params: { userId: '123' } })
+      // console.log('', );
+    }, 2000);
 
-    console.log("this.cards", JSON.stringify(this.cards));
-
-    return true;
+    // const image = e.target.files[0];
+    // const reader = new FileReader();
+    // reader.readAsDataURL(image);
+    // reader.onload = (e) => {
+    //   this.previewImage = e.target.result;
+    //   console.log(this.previewImage);
+    // };
   }
 }
 </script>
 
 <style scoped lang="scss">
-.card {
-  border: 1px solid black;
-  display: inline-block;
-  padding: 30px;
-}
 </style>

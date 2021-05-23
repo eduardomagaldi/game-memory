@@ -49,8 +49,6 @@ export default class MemoryAscending extends Vue {
   // numberOfCards: number = parseInt(this.$route?.params?.numberOfCards, 10);
 
   created(): boolean {
-    console.log("this.$route.params.clientId");
-
     return true;
   }
 }

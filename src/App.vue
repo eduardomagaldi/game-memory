@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <h1>Memory Game</h1>
+    <a href="/">home</a>
     <!-- <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>

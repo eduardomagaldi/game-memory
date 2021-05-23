@@ -2,41 +2,26 @@
   <div class="about">
     <h2>Challenge</h2>
 
-    <router-link
-      :to="{
-        name: 'MemoryAscendingCards',
-        params: {
-          numberOfCards,
-        },
-      }"
-    >
-      Go to cards -->
-    </router-link>
+    <ListCard :flipped="false" />
   </div>
 </template>
 
 <script lang="ts">
 // this.$route.params.clientId
 
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Vue } from "vue-property-decorator";
 
-@Component
-export default class MemoryAscending extends Vue {
-  // @Prop() private msg!: string;
+import ListCard from "@/components/ListCard.vue";
 
+@Component({
+  components: {
+    ListCard,
+  },
+})
+export default class MemoryAscendingChallenge extends Vue {
   private numberOfCards: number = parseInt(
     this.$route?.params?.numberOfCards,
     10
   );
-
-  // const clientId: number = this.$route?.params?.numberOfCards;
-
-  // numberOfCards: number = parseInt(this.$route?.params?.numberOfCards, 10);
-
-  created(): boolean {
-    console.log("this.$route.params.clientId");
-
-    return true;
-  }
 }
 </script>
