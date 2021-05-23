@@ -1,23 +1,29 @@
 <template>
   <div class="ListCard">
     <div class="wrapper__inner">
-      <div
-        class="flip-card"
-        v-for="(card, index) in cards"
-        :key="index"
-        :class="flipped ? 'flip-card--flipped' : ''"
-      >
-        <div class="flip-card-inner">
-          <div class="flip-card-front" @click="onClick(index)">
-            {{ card.indexSelected !== undefined ? card.indexSelected + 1 : "" }}
+      <template v-if="cards && cards.length">
+        <div
+          class="flip-card"
+          v-for="(card, index) in cards"
+          :key="index"
+          :class="flipped ? 'flip-card--flipped' : ''"
+        >
+          <div class="flip-card-inner">
+            <div class="flip-card-front" @click="onClick(index)">
+              {{
+                card.indexSelected !== undefined ? card.indexSelected + 1 : ""
+              }}
 
-            <!-- <small style="color: grey">{{ card.value }}</small> -->
-          </div>
-          <div class="flip-card-back">
-            {{ card.value }}
+              <!-- <small style="color: grey">{{ card.value }}</small> -->
+            </div>
+            <div class="flip-card-back">
+              {{ card.value }}
+            </div>
           </div>
         </div>
-      </div>
+      </template>
+
+      <template v-else> Loading... </template>
     </div>
 
     <span class="error" v-if="fail">
