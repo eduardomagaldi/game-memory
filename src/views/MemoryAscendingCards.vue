@@ -3,7 +3,7 @@
     <h2 class="mt-0 mb-0">Cards</h2>
     <small>Take your time to memorise the cards, then click Play.</small>
 
-    <ListCard :flipped="flipped" />
+    <ListCard :flipped="flipped" :forceTurn="true" />
 
     <button class="btn--play" @click="onPlay">Play -></button>
   </div>
@@ -34,7 +34,7 @@ export default class MemoryAscending extends Vue {
         name: "MemoryAscendingChallenge",
         params: { numberOfCards: this.numberOfCards.toString() },
       });
-    }, 2000);
+    }, 800);
   }
 }
 </script>

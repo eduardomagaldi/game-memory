@@ -9,7 +9,7 @@ export default new Vuex.Store({
     verbose: false,
   },
   modules: {
-    font: turnsModule,
+    turns: turnsModule,
   },
   actions: {
     saveCurrentFullPath: function (context, fullPath): void {

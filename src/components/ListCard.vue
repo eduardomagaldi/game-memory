@@ -11,7 +11,7 @@
           <div class="flip-card-front" @click="onClick(index)">
             {{ card.indexSelected !== undefined ? card.indexSelected + 1 : "" }}
 
-            <small style="color: grey">{{ card.value }}</small>
+            <!-- <small style="color: grey">{{ card.value }}</small> -->
           </div>
           <div class="flip-card-back">
             {{ card.value }}
@@ -36,6 +36,7 @@ import { Card } from "./../common/interfaces";
 @Component
 export default class ListCard extends Vue {
   @Prop() private flipped!: boolean;
+  @Prop() private forceTurn!: boolean;
 
   private cards: Card[] = [];
   private numberOfCards: number = parseInt(
@@ -45,22 +46,18 @@ export default class ListCard extends Vue {
   private indexCurr = 0;
   private fail = false;
 
-  async created(): Promise<boolean> {
-    this.cards = await this.$store.dispatch("getCards", this.numberOfCards);
+  async created(): Promise<void> {
+    let cards = this.$store.state.turns?.turn?.cards;
 
-    console.log("cards", this.cards);
+    if (!cards || this.forceTurn) {
+      cards = await this.$store.dispatch("getCards", this.numberOfCards);
+    }
+
+    this.cards = cards;
 
     if (this.numberOfCards > 12) {
       throw new Error();
     }
-
-    // for (let i = 0; i < this.numberOfCards; i++) {
-    //   this.cards.push({
-    //     value:
-    //   });
-    // }
-
-    return true;
   }
 
   onClick(index: number): void {
