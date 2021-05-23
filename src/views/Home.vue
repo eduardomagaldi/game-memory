@@ -9,14 +9,11 @@
 </template>
 
 <script>
-// @ is an alias to /src
-// import HelloWorld from "@/components/HelloWorld.vue";
 import ChooseDifficulty from "@/components/ChooseDifficulty.vue";
 
 export default {
   name: "Home",
   components: {
-    // HelloWorld,
     ChooseDifficulty,
   },
 };

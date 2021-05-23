@@ -75,7 +75,6 @@ export default class ListCard extends Vue {
     });
 
     if (complete.length === this.numberOfCards) {
-      console.log("showResult");
       this.showResult();
     }
   }
@@ -85,8 +84,6 @@ export default class ListCard extends Vue {
     let result = true;
 
     result = sorted.every((card: Card, index: number) => {
-      console.log("card", JSON.parse(JSON.stringify(card)));
-
       if (card.indexSelected === index) {
         return true;
       }
@@ -112,7 +109,7 @@ export default class ListCard extends Vue {
   }
 }
 
-function compare(a: any, b: any): number {
+function compare(a: Card, b: Card): number {
   if (a.value > b.value) {
     return 1;
   }

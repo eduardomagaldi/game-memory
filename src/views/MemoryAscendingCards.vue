@@ -21,8 +21,6 @@
 </template>
 
 <script lang="ts">
-// this.$route.params.clientId
-
 import { Component, Vue } from "vue-property-decorator";
 import ListCard from "@/components/ListCard.vue";
 
@@ -32,8 +30,6 @@ import ListCard from "@/components/ListCard.vue";
   },
 })
 export default class MemoryAscending extends Vue {
-  // @Prop() private msg!: string;
-  // const clientId: number = this.$route?.params?.numberOfCards;
   private numberOfCards: number = parseInt(
     this.$route?.params?.numberOfCards,
     10
@@ -41,8 +37,7 @@ export default class MemoryAscending extends Vue {
 
   private flipped = true;
 
-  public onPlay(e: MouseEvent): void {
-    console.log("e", e);
+  public onPlay(): void {
     this.flipped = false;
 
     setTimeout(() => {
@@ -50,22 +45,7 @@ export default class MemoryAscending extends Vue {
         name: "MemoryAscendingChallenge",
         params: { numberOfCards: this.numberOfCards.toString() },
       });
-
-      // console.log('this.router', );
-      // this.$route?.push({ name: 'user', params: { userId: '123' } })
-      // console.log('', );
     }, 2000);
-
-    // const image = e.target.files[0];
-    // const reader = new FileReader();
-    // reader.readAsDataURL(image);
-    // reader.onload = (e) => {
-    //   this.previewImage = e.target.result;
-    //   console.log(this.previewImage);
-    // };
   }
 }
 </script>
-
-<style scoped lang="scss">
-</style>
