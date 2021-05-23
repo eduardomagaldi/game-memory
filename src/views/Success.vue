@@ -1,6 +1,6 @@
 <template>
   <div class="about">
-    <h2>Congratulations, you win!</h2>
+    <h2 class="mt-0 mb-0">Congratulations, you win!</h2>
 
     <router-link
       :to="{

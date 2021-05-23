@@ -1,10 +1,10 @@
 <template>
   <div class="about">
-    <h2>Challenge</h2>
-
-    <ListCard :flipped="false" />
+    <h2 class="mb-0 mt-0">Challenge</h2>
 
     <small>Click on the cards in ascending order.</small>
+
+    <ListCard :flipped="false" />
   </div>
 </template>
 

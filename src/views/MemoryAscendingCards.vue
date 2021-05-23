@@ -1,10 +1,9 @@
 <template>
-  <div class="about">
-    <h2>Cards</h2>
+  <div>
+    <h2 class="mt-0 mb-0">Cards</h2>
+    <small>Take your time to memorise the cards, then click Play.</small>
 
     <ListCard :flipped="flipped" />
-
-    <small>Take your time to memorise the cards, then click Play.</small>
 
     <button class="btn--play" @click="onPlay">Play -></button>
   </div>
@@ -39,3 +38,11 @@ export default class MemoryAscending extends Vue {
   }
 }
 </script>
+
+<style scoped lang="scss">
+// .flex-column {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+// }
+</style>

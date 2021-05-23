@@ -1,6 +1,6 @@
 <template>
   <div class="Difficulty">
-    <h2>Choose Difficulty</h2>
+    <h2 class="mt-0 mb-0">Choose Difficulty</h2>
 
     <router-link
       :to="{

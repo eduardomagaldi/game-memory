@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <a href="/"><h1>Lepaya - Memory Game (Ascending)</h1></a>
+    <a href="/"><h1 class="mt-0">Lepaya - Memory Game (Ascending)</h1></a>
 
     <router-view />
   </div>
@@ -34,5 +34,25 @@
       color: #42b983;
     }
   }
+}
+
+.mt-0 {
+  margin-top: 0 !important;
+}
+
+.mb-0 {
+  margin-bottom: 0 !important;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h2 {
+  // background: yellow;
+}
+
+small {
+  // background: gold;
 }
 </style>

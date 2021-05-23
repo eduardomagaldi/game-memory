@@ -1,7 +1,7 @@
 import fetch from "@/helpers/fetch";
 
 interface State {
-  // user: User
+  bla?: boolean;
 }
 
 // export enum MutationTypes {
@@ -47,6 +47,7 @@ export default {
   },
   actions: {
     login: async function (context: Context, query: string): Promise<any> {
+      console.log("login");
       const data = await fetch.get("/api/login" + query);
       return data;
     },

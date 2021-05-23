@@ -31,10 +31,7 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 
-interface Card {
-  value: number;
-  indexSelected?: number;
-}
+import { Card } from "./../common/interfaces";
 
 @Component
 export default class ListCard extends Vue {
@@ -49,6 +46,9 @@ export default class ListCard extends Vue {
   private fail = false;
 
   created(): boolean {
+    // console.log("this.$store", this.$store.);
+    this.$store.dispatch("login", this.$route);
+
     if (this.numberOfCards > 12) {
       throw new Error();
     }
@@ -106,6 +106,7 @@ export default class ListCard extends Vue {
     });
 
     this.indexCurr = 0;
+    this.fail = false;
   }
 }
 
@@ -123,10 +124,17 @@ function compare(a: Card, b: Card): number {
 </script>
 
 <style scoped lang="scss">
+.ListCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .wrapper__inner {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
@@ -134,8 +142,15 @@ function compare(a: Card, b: Card): number {
   background-color: transparent;
   width: 300px;
   height: 200px;
-  border: 1px solid #f1f1f1;
+
+  width: 100px;
+  height: 200px;
+
+  // border: 1px solid #f1f1f1;
   perspective: 1000px; /* Remove this if you don't want the 3D effect */
+
+  // margin: 40px;
+  // border-style: double;
 }
 
 /* This container is needed to position the front and back side */
@@ -175,6 +190,8 @@ function compare(a: Card, b: Card): number {
   justify-content: center;
 
   font-size: 60px;
+
+  border: 8px double white;
 }
 
 /* Style the front side (fallback if image is missing) */

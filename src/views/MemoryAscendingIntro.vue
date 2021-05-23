@@ -1,6 +1,6 @@
 <template>
   <div class="about">
-    <h2>Memory (ascending) Game</h2>
+    <h2 class="mt-0 mb-0">Memory (ascending) Game</h2>
 
     <h3>How it works:</h3>
 

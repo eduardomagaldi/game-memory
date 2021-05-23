@@ -1,11 +1,19 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import turnsModule from "./modules/turns";
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state: {},
-  mutations: {},
-  actions: {},
-  modules: {},
+  state: {
+    verbose: false,
+  },
+  modules: {
+    font: turnsModule,
+  },
+  actions: {
+    saveCurrentFullPath: function (context, fullPath): void {
+      localStorage.currentFullPath = fullPath;
+    },
+  },
 });
