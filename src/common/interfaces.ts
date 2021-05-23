@@ -1,4 +1,4 @@
-export interface Card {
+export interface CardType {
   value: number;
   indexSelected?: number;
 }

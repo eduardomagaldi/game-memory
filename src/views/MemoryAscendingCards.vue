@@ -1,9 +1,14 @@
 <template>
-  <div>
+  <div class="wrapper__app">
     <h2 class="mt-0 mb-0">Cards</h2>
     <small>Take your time to memorise the cards, then click Play.</small>
 
-    <ListCard :flipped="flipped" :forceTurn="true" />
+    <ListCard
+      :flipped="flipped"
+      :forceTurn="true"
+      :showReset="false"
+      :color="color"
+    />
 
     <button class="btn--play" @click="onPlay">Play -></button>
   </div>
@@ -12,6 +17,7 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import ListCard from "@/components/ListCard.vue";
+import colorHelper from "@/helpers/color";
 
 @Component({
   components: {
@@ -23,7 +29,7 @@ export default class MemoryAscending extends Vue {
     this.$route?.params?.numberOfCards,
     10
   );
-
+  private color: string = colorHelper.getColor(this.numberOfCards);
   private flipped = true;
 
   public onPlay(): void {
@@ -34,7 +40,7 @@ export default class MemoryAscending extends Vue {
         name: "MemoryAscendingChallenge",
         params: { numberOfCards: this.numberOfCards.toString() },
       });
-    }, 800);
+    }, 1200);
   }
 }
 </script>

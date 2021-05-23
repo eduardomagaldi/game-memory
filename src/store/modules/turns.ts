@@ -1,9 +1,10 @@
-import { Card } from "@/common/interfaces";
+import { Vue } from 'vue-property-decorator';
+import { CardType } from "@/common/interfaces";
 import fetch from "@/helpers/fetch";
 
 interface Turn {
   date: Date;
-  cards: Card[];
+  cards: CardType[];
 }
 
 interface State {
@@ -13,6 +14,7 @@ interface State {
 
 interface Context {
   commit: any;
+  state: any;
 }
 
 export default {
@@ -20,21 +22,43 @@ export default {
     turn: {},
   },
   mutations: {
-    SET_TURN(state: State, cards: Card[]): void {
+    SET_TURN(state: State, cards: CardType[]): boolean {
       state.turn = {
         date: new Date(),
         cards,
       };
+      return true;
+    },
+    SET_INDEX(state: State, card: CardType, index: number): void {
+      Vue.delete(card, 'indexSelected');
     },
   },
   actions: {
     getCards: async function (
       context: Context,
       numberOfCards: number
-    ): Promise<any> {
-      const cards: Card[] = await fetch.get(`/api/cards/${numberOfCards}`);
-      context.commit("SET_TURN", cards);
-      return cards;
+    ): Promise<CardType[]> {
+      const a: CardType[] = await fetch.get(`/api/cards/${numberOfCards}`);
+
+      context.commit("SET_TURN", a);
+
+      return new Promise((resolve) => {
+        resolve(a);
+      });
+    },
+    resetIndexes: async function (
+      context: Context,
+      numberOfCards: number,
+    ): Promise<CardType[]> {
+
+      // Vue.set(selected, "indexSelected", this.indexCurr);
+      // console.log('resetIndexes');
+
+      console.log("context", context);
+
+      context.state.turn.cards.forEach((card: CardType) => {
+        context.commit("SET_INDEX", card);
+      });
     },
   },
 };

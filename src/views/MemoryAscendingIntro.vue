@@ -1,5 +1,5 @@
 <template>
-  <div class="about">
+  <div class="wrapper__app">
     <h2 class="mt-0 mb-0">Memory (ascending) Game</h2>
 
     <h3>How it works:</h3>

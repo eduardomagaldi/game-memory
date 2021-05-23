@@ -1,5 +1,7 @@
 <template>
-  <ChooseDifficulty />
+  <div class="wrapper__app">
+    <ChooseDifficulty />
+  </div>
 </template>
 
 <script>

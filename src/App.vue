@@ -15,12 +15,22 @@
 // require('@/assets/css/main.css')
 // import '';
 
+html,
+body {
+  text-align: center;
+  height: 100%;
+}
+
 #app {
   font-family: "Lato", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  // color: #2c3e50;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 40px 0;
 }
 
 #nav {
@@ -44,6 +54,18 @@
   margin-bottom: 0 !important;
 }
 
+.mr-1 {
+  margin-right: 0.5em !important;
+}
+
+.d-flex {
+  display: flex !important;
+}
+
+.align-items-center {
+  align-items: center !important;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -54,5 +76,24 @@ h2 {
 
 small {
   // background: gold;
+}
+
+.wrapper__app {
+  background: lightyellow;
+  max-width: 768px;
+  margin: 0 auto;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  padding: 40px;
+}
+
+ul,
+ol {
+  text-align: left;
 }
 </style>

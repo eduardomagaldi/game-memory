@@ -1,3 +1,5 @@
+import { CardType } from "@/common/interfaces";
+
 const apiUrl = "http://localhost:8081";
 
 declare global {
@@ -12,11 +14,11 @@ export default {
   delete: deleteFetch,
 };
 
-async function get(url: string): Promise<void> {
+async function get(url: string): Promise<CardType[]> {
   const response = await fetch(apiUrl + url, { ...getOptions() });
 
   if (handleErrors(response)) {
-    return;
+    return [];
   }
 
   return await parseBody(response);
