@@ -99,7 +99,7 @@ ol {
 }
 
 .btn {
-  background-color: darken($blue, 10);
+  background-color: darken($easy, 10);
   border-radius: 300px;
   border: none;
   color: white;
@@ -109,7 +109,7 @@ ol {
   text-decoration: none;
 
   &:hover {
-    background-color: darken($blue, 20);
+    background-color: darken($easy, 20);
   }
 }
 </style>

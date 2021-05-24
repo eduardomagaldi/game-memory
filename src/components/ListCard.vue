@@ -61,15 +61,13 @@ export default class ListCard extends Vue {
       throw new Error("numberOfCards too high");
     }
 
-    if (!this.cards) {
-      if (this.requestData) {
-        await this.$store.dispatch("getCards", this.numberOfCards);
-      } else {
-        this.$router.push({
-          name: "MemoryAscendingCards",
-          params: { numberOfCards: this.numberOfCards.toString() },
-        });
-      }
+    if (!this.cards || this.requestData) {
+      await this.$store.dispatch("getCards", this.numberOfCards);
+    } else if (!this.cards) {
+      this.$router.push({
+        name: "MemoryAscendingCards",
+        params: { numberOfCards: this.numberOfCards.toString() },
+      });
     }
   }
 
@@ -127,6 +125,8 @@ function compare(a: CardType, b: CardType): number {
 </script>
 
 <style scoped lang="scss">
+@import "@/styles/variables";
+
 .ListCard {
   display: flex;
   flex-direction: column;
@@ -147,6 +147,6 @@ function compare(a: CardType, b: CardType): number {
 }
 
 .error {
-  color: red;
+  color: $hard;
 }
 </style>
