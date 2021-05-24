@@ -50,6 +50,10 @@ body {
   margin-right: 0.5em !important;
 }
 
+.mt-2 {
+  margin-top: 2em !important;
+}
+
 .d-flex {
   display: flex !important;
 }
@@ -98,7 +102,8 @@ ol {
 }
 
 .btn {
-  background-color: blue;
+  // background-color: blue;
+  background-color: lightblue;
   border-radius: 300px;
   border: none;
   color: white;
@@ -108,7 +113,7 @@ ol {
   text-decoration: none;
 
   &:hover {
-    background-color: lightblue;
+    background-color: blue;
   }
 }
 </style>

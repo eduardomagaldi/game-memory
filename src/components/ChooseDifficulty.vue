@@ -101,6 +101,8 @@ export default class ChooseDifficulty extends Vue {}
 </script>
 
 <style scoped lang="scss">
+$blue: #6ccbdf;
+
 .Difficulty {
   width: 100%;
 }
@@ -142,10 +144,10 @@ export default class ChooseDifficulty extends Vue {}
   }
 
   &.easy {
-    color: darken(#6ccbdf, 10);
+    color: darken($blue, 10);
 
     .wrapper__img {
-      background-color: lighten(#6ccbdf, 20);
+      background-color: lighten($blue, 20);
     }
   }
 
@@ -167,7 +169,7 @@ export default class ChooseDifficulty extends Vue {}
 
   &:hover {
     &.easy {
-      background-color: lighten(#6ccbdf, 30);
+      background-color: lighten($blue, 30);
     }
 
     &.medium {

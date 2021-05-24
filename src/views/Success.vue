@@ -7,6 +7,7 @@
         name: 'Home',
       }"
       :class="'btn--play'"
+      class="btn mt-2"
     >
       Start again
     </router-link>

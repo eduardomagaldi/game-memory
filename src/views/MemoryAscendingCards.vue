@@ -3,7 +3,12 @@
     <h2 class="mt-0 mb-0">Cards</h2>
     <small>Take your time to memorise the cards, then click Play.</small>
 
-    <ListCard :flipped="flipped" :showReset="false" :color="color" />
+    <ListCard
+      :flipped="flipped"
+      :showReset="false"
+      :color="color"
+      :requestData="true"
+    />
 
     <button class="btn btn--play" @click="onPlay">PLAY -></button>
   </div>

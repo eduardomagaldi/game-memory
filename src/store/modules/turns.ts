@@ -32,6 +32,8 @@ export default {
         date: new Date(),
         cards,
       };
+      state.indexCurr = 0;
+      state.fail = false;
     },
     SET_FAIL(state: State, result: boolean): void {
       state.fail = result;
