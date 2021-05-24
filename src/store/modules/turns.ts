@@ -10,6 +10,8 @@ interface Turn {
 interface State {
   bla?: boolean;
   turn: Turn;
+  indexCurr: number;
+  fail: boolean;
 }
 
 interface Context {
@@ -20,17 +22,31 @@ interface Context {
 export default {
   state: {
     turn: {},
+    indexCurr: 0,
+    fail: false,
   },
   mutations: {
-    SET_TURN(state: State, cards: CardType[]): boolean {
+    SET_TURN(state: State, cards: CardType[]): void {
       state.turn = {
         date: new Date(),
         cards,
       };
-      return true;
+    },
+    SET_FAIL(state: State, result: boolean): void {
+      state.fail = result;
     },
     SET_INDEX(state: State, card: CardType, index: number): void {
-      Vue.delete(card, "indexSelected");
+      Vue.delete(card, "indexAnswer");
+    },
+    SET_INDEX_CURR(state: State, index: number): void {
+      state.indexCurr = index;
+    },
+    SET_INDEX_ANSWER(state: State, resp: any): void {
+      const index = findInArray(state.turn.cards, resp.card);
+
+      if (index !== null) {
+        Vue.set(state.turn.cards[index], "indexAnswer", resp.index);
+      }
     },
   },
   actions: {
@@ -46,13 +62,40 @@ export default {
         resolve(cards);
       });
     },
-    resetIndexes: async function (
-      context: Context,
-      numberOfCards: number
-    ): Promise<CardType[]> {
+
+    resetAllIndexes: async function (context: Context): Promise<null> {
       context.state.turn.cards.forEach((card: CardType) => {
         context.commit("SET_INDEX", card);
       });
+
+      return null;
+    },
+
+    setIndexCurr: function (context: Context, index: number): void {
+      context.commit("SET_INDEX_CURR", index);
+    },
+
+    setIndexAnswer: function (context: Context, resp: any): void {
+      context.commit("SET_INDEX_ANSWER", resp);
+    },
+
+    setFail: function (context: Context, result: boolean): void {
+      context.commit("SET_FAIL", result);
     },
   },
 };
+
+function findInArray(array: any[], itemSearch: any) {
+  let index = null;
+
+  array.every((item: any, i: number) => {
+    if (itemSearch === item) {
+      index = i;
+      return false;
+    }
+
+    return true;
+  });
+
+  return index;
+}

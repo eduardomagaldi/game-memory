@@ -20,11 +20,6 @@ app.use(
   })
 );
 
-// app.use(function (req, res, next) {
-//   res.header("Access-Control-Allow-Origin", origin);
-//   next();
-// });
-
 app.use(express.static("dist"));
 
 app.get("/api/cards/:numberOfCards", async function (req, res) {

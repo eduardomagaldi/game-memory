@@ -74,7 +74,7 @@ h1,
 h2,
 h3 {
   font-weight: bold;
-  color: black;
+  color: #2c3239;
 }
 
 .wrapper__app {

@@ -10,7 +10,7 @@
     <div class="inner">
       <div class="front face" @click="onClick">
         <template v-if="card">
-          {{ card.indexSelected !== undefined ? card.indexSelected + 1 : "" }}
+          {{ card.indexAnswer !== undefined ? card.indexAnswer + 1 : "" }}
         </template>
       </div>
       <div class="back face">

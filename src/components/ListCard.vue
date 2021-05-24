@@ -7,7 +7,6 @@
           :key="index"
           :card="card"
           :flipped="flipped"
-          :indexCurr="indexCurr"
           :color="color"
           @click="onClick"
         />
@@ -45,11 +44,17 @@ export default class ListCard extends Vue {
     this.$route?.params?.numberOfCards,
     10
   );
-  private indexCurr = 0;
-  private fail = false;
 
-  get cards(): CardType[] {
+  get cards(): CardType[] | null {
     return this.$store.state.turns?.turn?.cards;
+  }
+
+  get indexCurr(): number {
+    return this.$store.state.turns?.indexCurr;
+  }
+
+  get fail(): boolean {
+    return this.$store.state.turns?.fail;
   }
 
   async created(): Promise<void> {
@@ -67,60 +72,44 @@ export default class ListCard extends Vue {
         });
       }
     }
-
-    // if (this.requestData) {
-    //   if (!this.cards) {
-    //
-    //   }
-    // }
   }
 
   onClick(card: CardType): void {
-    let index = 0;
+    const resp = { card, index: this.indexCurr };
+    this.$store.dispatch("setIndexAnswer", resp);
+    this.$store.dispatch("setIndexCurr", this.indexCurr + 1);
 
-    this.cards.every((c, i) => {
-      if (c.value === card.value) {
-        index = i;
-        return false;
+    if (this.cards) {
+      const complete = this.cards.filter((card: CardType) => {
+        return card?.indexAnswer !== undefined;
+      });
+
+      if (complete.length === this.numberOfCards) {
+        this.showResult();
       }
-
-      return true;
-    });
-
-    const selected: CardType = this.cards?.[index];
-
-    if (selected.indexSelected === undefined) {
-      Vue.set(selected, "indexSelected", this.indexCurr);
-      this.indexCurr++;
-    }
-
-    const complete = this.cards.filter((card: CardType) => {
-      return card.indexSelected !== undefined;
-    });
-
-    if (complete.length === this.numberOfCards) {
-      this.showResult();
     }
   }
 
   showResult(): void {
-    const sorted = this.cards.slice().sort(compare);
+    const sorted = this.cards?.slice().sort(compare);
     let result = true;
 
-    result = sorted.every((card: CardType, index: number) => {
-      if (card.indexSelected === index) {
-        return true;
-      }
+    if (sorted && sorted.length) {
+      result = sorted.every((card: CardType, index: number) => {
+        if (card.indexAnswer === index) {
+          return true;
+        }
 
-      return false;
-    });
+        return false;
+      });
+    }
 
     if (result) {
       this.$router.push({
         name: "Success",
       });
     } else {
-      this.fail = true;
+      this.$store.dispatch("setFail", true);
     }
   }
 }

@@ -29,7 +29,9 @@ export default class MemoryAscendingChallenge extends Vue {
   reset(): void {
     // let cards: CardType[] = this.$store.state.turns?.turn?.cards;
 
-    this.$store.dispatch("resetIndexes");
+    this.$store.dispatch("resetAllIndexes");
+    this.$store.dispatch("setIndexCurr", 0);
+    this.$store.dispatch("setFail", false);
 
     // Vue.set(selected, "indexSelected", this.indexCurr);
 

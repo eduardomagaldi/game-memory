@@ -5,9 +5,7 @@ import turnsModule from "./modules/turns";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state: {
-    verbose: false,
-  },
+  state: {},
   modules: {
     turns: turnsModule,
   },
