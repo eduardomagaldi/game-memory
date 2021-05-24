@@ -79,7 +79,6 @@ small {
 }
 
 .wrapper__app {
-  background: lightyellow;
   max-width: 768px;
   margin: 0 auto;
   height: 100%;

@@ -4,7 +4,7 @@
 
     <div>
       <router-link
-        class="option"
+        class="option easy"
         :to="{
           name: 'MemoryAscendingIntro',
           params: {
@@ -13,12 +13,15 @@
         }"
       >
         <div class="d-flex align-items-center">
-          <img
-            class="mr-1"
-            alt="Vue logo"
-            src="../assets/blue-square.svg"
-            width="30"
-          />
+          <div class="wrapper__img">
+            <!-- <img
+
+              alt="Vue logo"
+              src="../assets/blue-square.svg"
+              width="30"
+            /> -->
+            <img alt="Vue logo" src="../assets/fish.svg" width="40" />
+          </div>
           <h3 class="mb-0 mt-0">Easy (4 cards)</h3>
         </div>
 
@@ -28,7 +31,7 @@
       </router-link>
 
       <router-link
-        class="option"
+        class="option medium"
         :to="{
           name: 'MemoryAscendingIntro',
           params: {
@@ -37,12 +40,15 @@
         }"
       >
         <div class="d-flex align-items-center">
-          <img
-            class="mr-1"
-            alt="Vue logo"
-            src="../assets/yellow-circle.svg"
-            width="30"
-          />
+          <div class="wrapper__img">
+            <!-- <img
+
+              alt="Vue logo"
+              src="../assets/yellow-circle.svg"
+              width="30"
+            /> -->
+            <img alt="Vue logo" src="../assets/parrot.svg" width="40" />
+          </div>
           <h3 class="mb-0 mt-0">Medium (8 cards)</h3>
         </div>
 
@@ -52,7 +58,7 @@
       </router-link>
 
       <router-link
-        class="option"
+        class="option hard"
         :to="{
           name: 'MemoryAscendingIntro',
           params: {
@@ -61,12 +67,15 @@
         }"
       >
         <div class="d-flex align-items-center">
-          <img
-            class="mr-1"
-            alt="Vue logo"
-            src="../assets/pink-triangle.svg"
-            width="30"
-          />
+          <div class="wrapper__img">
+            <!-- <img
+
+              alt="Vue logo"
+              src="../assets/pink-triangle.svg"
+              width="40"
+            /> -->
+            <img alt="Vue logo" src="../assets/elephant.svg" width="40" />
+          </div>
           <h3 class="mb-0 mt-0">Hard (12 cards)</h3>
         </div>
 
@@ -107,7 +116,7 @@ export default class ChooseDifficulty extends Vue {}
 // }
 
 .option {
-  border: 1px solid grey;
+  border: 1px solid rgb(226, 226, 226);
   border-bottom-width: 0;
   padding: 10px;
   display: block;
@@ -117,6 +126,7 @@ export default class ChooseDifficulty extends Vue {}
   align-items: center;
   justify-content: space-between;
   background-color: white;
+  transition: background-color 0.3s;
 
   &:first-child {
     border-radius: 5px 5px 0 0;
@@ -125,6 +135,72 @@ export default class ChooseDifficulty extends Vue {}
   &:last-child {
     border-bottom-width: 1px;
     border-radius: 0 0 5px 5px;
+  }
+
+  &.easy {
+    color: darken(#6ccbdf, 10);
+
+    .wrapper__img {
+      background-color: lighten(#6ccbdf, 20);
+    }
+  }
+
+  &.medium {
+    color: darken(#ffbd19, 10);
+
+    .wrapper__img {
+      background-color: lighten(#ffbd19, 30);
+    }
+  }
+
+  &.hard {
+    color: darken(#ef0365, 0);
+
+    .wrapper__img {
+      background-color: lighten(#ef0365, 45);
+    }
+  }
+
+  &:hover {
+    &.easy {
+      color: darken(#6ccbdf, 10);
+      background-color: lighten(#6ccbdf, 20);
+
+      .wrapper__img {
+      }
+    }
+
+    &.medium {
+      color: darken(#ffbd19, 10);
+      background-color: lighten(#ffbd19, 30);
+
+      .wrapper__img {
+      }
+    }
+
+    &.hard {
+      color: darken(#ef0365, 0);
+      background-color: lighten(#ef0365, 45);
+
+      .wrapper__img {
+      }
+    }
+  }
+}
+
+.wrapper__img {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+  border-radius: 5px;
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    padding: 5px;
   }
 }
 </style>
