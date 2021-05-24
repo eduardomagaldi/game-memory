@@ -46,3 +46,4 @@ app.get("*", function (req, res) {
 });
 
 http.createServer(app).listen(8081);
+console.log('Listening on localhost:8081');
