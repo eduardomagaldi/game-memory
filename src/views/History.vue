@@ -61,7 +61,6 @@ export default class History extends Vue {
 
   get allHistory(): string[] {
     const allkeys = Object.keys(localStorage);
-    console.log("allkeys", allkeys);
     allkeys.sort().reverse();
     return allkeys;
   }

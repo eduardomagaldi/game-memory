@@ -1,5 +1,3 @@
-// https://docs.cypress.io/api/introduction/api.html
-
 describe("Memory game works properly", () => {
   it("Visits the app root url and shows 3 options", () => {
     cy.visit("/");
@@ -19,8 +17,7 @@ describe("Memory game works properly", () => {
     cy.get(".btn").click();
     cy.url().should("contain", "/games/memory-ascending/4/cards");
 
-    cy
-      .get(".Card")
+    cy.get(".Card")
       .first()
       .should(($div) => {
         const text = $div.get(0).innerText;
@@ -45,7 +42,7 @@ function tryAllCombinations() {
   ];
 
   all.every((number) => {
-    cy.wait(1000);
+    cy.wait(500);
     const result = clickAll(number);
 
     cy.get("body").then(($body) => {
@@ -61,25 +58,28 @@ function tryAllCombinations() {
 }
 
 function clickAll(number) {
-  const indexes = number.toString().split("");
   let stop = true;
 
-  indexes.forEach((index) => {
-    cy.get("body").then(($body) => {
-      const card = $body.find(`.Card:nth-child(${index})`);
+  cy.url().then((url) => {
+    if (!url.includes("success")) {
+      const indexes = number.toString().split("");
 
-      if (card.length > 0) {
-        card.find(".front").click();
-      }
-    });
-  });
+      indexes.forEach((index) => {
+        cy.get("body").then(($body) => {
+          const card = $body.find(`.Card:nth-child(${index})`);
 
-  cy.get("body").then(($body) => {
-    if ($body.find(".error").length > 0) {
-      console.log("exists");
-    } else {
-      cy.url().should("contain", "/games/memory-ascending/success");
-      stop = false;
+          if (card.length > 0) {
+            card.find(".front").click();
+          }
+        });
+      });
+
+      cy.get("body").then(($body) => {
+        if (!$body.find(".error").length) {
+          cy.url().should("contain", "/games/memory-ascending/success");
+          stop = false;
+        }
+      });
     }
   });
 
