@@ -30,6 +30,11 @@ const routes: Array<RouteConfig> = [
     name: "Success",
     component: () => import("../views/Success.vue"),
   },
+  {
+    path: "/games/memory-ascending/history",
+    name: "History",
+    component: () => import("../views/History.vue"),
+  },
 ];
 
 const router = new VueRouter({

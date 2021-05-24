@@ -4,6 +4,9 @@ Candidate: Eduardo Magaldi
 
 - Chosen option: A. Memory game
 - Quick description of solution architecture: Vue.js + Typescript Front-end App and server using node.js.
+- What is done:
+    1. Basic project as requested.
+    2. History functionality (using localStorage).
 - Source code (this repo).
 - README with build/run steps (See ```How to run``` below).
 - Libraries used with the reason of choice.

@@ -173,4 +173,8 @@ export default class ChooseDifficulty extends Vue {}
     padding: 5px;
   }
 }
+
+.cards__wrapper {
+  max-width: 300px;
+}
 </style>

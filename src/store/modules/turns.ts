@@ -3,15 +3,14 @@ import { CardType } from "@/common/interfaces";
 import fetch from "@/helpers/fetch";
 
 interface Turn {
-  date: Date;
   cards: CardType[];
 }
 
 interface State {
-  bla?: boolean;
   turn: Turn;
   indexCurr: number;
   fail: boolean;
+  turnHistory: Turn[];
 }
 
 interface Context {
@@ -40,12 +39,17 @@ export default {
   },
   mutations: {
     SET_TURN(state: State, cards: CardType[]): void {
-      state.turn = {
-        date: new Date(),
+      const turn = {
         cards,
       };
+      state.turn = turn;
       state.indexCurr = 0;
       state.fail = false;
+
+      if (localStorage) {
+        const key = "turn-" + new Date().getTime().toString();
+        localStorage.setItem(key, JSON.stringify(cards));
+      }
     },
     SET_FAIL(state: State, result: boolean): void {
       state.fail = result;

@@ -1,11 +1,22 @@
 <template>
   <div id="app">
     <a href="/">
+      <img alt="Lepaya" src="./assets/lepaya.png" height="50" class="mr-1" />
+
       <h1 class="mt-0 d-flex align-items-center justify-content-center">
-        <img alt="Lepaya" src="./assets/lepaya.png" height="50" class="mr-1" />
         Memory Game (Ascending)
       </h1>
     </a>
+
+    <small>
+      <router-link
+        :to="{
+          name: 'History',
+        }"
+      >
+        view history
+      </router-link>
+    </small>
 
     <router-view />
   </div>
