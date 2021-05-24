@@ -7,6 +7,7 @@ Candidate: Eduardo Magaldi
 - What is done:
     1. Basic project as requested.
     2. History functionality (using localStorage).
+    3. Tests (using Cypress).
 - Source code (this repo).
 - README with build/run steps (See ```How to run``` below).
 - Libraries used with the reason of choice.

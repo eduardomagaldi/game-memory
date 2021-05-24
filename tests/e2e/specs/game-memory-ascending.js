@@ -85,13 +85,3 @@ function clickAll(number) {
 
   return stop;
 }
-
-export function exists(element) {
-  cy.get("body").then((body) => {
-    if (body.find(element).length > 0) {
-      return cy.get(element);
-    }
-
-    return null;
-  });
-}
