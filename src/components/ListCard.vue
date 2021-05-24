@@ -24,7 +24,7 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 
-import { CardType } from "./../common/interfaces";
+import { CardType } from "@/common/interfaces";
 
 import Card from "@/components/Card.vue";
 

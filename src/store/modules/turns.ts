@@ -15,9 +15,16 @@ interface State {
 }
 
 interface Context {
+  state: State;
+  rootState: State;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   commit: any;
-  state: State;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  dispatch: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  getters: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  rootGetters: any;
 }
 
 interface Resp {
