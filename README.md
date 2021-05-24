@@ -47,6 +47,12 @@ Candidate: Eduardo Magaldi
 ### (Development) Back-end
 Same as Production. Using nodemon to rerun the process on file change is a suggestion.
 
+## How to run tests
+Run `npm run test:e2e`;
+
+<!--
+About the frontend:
+
 # Vue.js create app README:
 
 ## Project setup
@@ -75,4 +81,4 @@ npm run lint
 ```
 
 ### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+See [Configuration Reference](https://cli.vuejs.org/config/). -->
