@@ -14,13 +14,7 @@
       >
         <div class="d-flex align-items-center">
           <div class="wrapper__img">
-            <!-- <img
-
-              alt="Vue logo"
-              src="../assets/blue-square.svg"
-              width="30"
-            /> -->
-            <img alt="Vue logo" src="../assets/fish.svg" width="40" />
+            <img alt="" src="../assets/fish.svg" width="40" />
           </div>
           <h3 class="mb-0 mt-0">Easy (4 cards)</h3>
         </div>
@@ -41,13 +35,7 @@
       >
         <div class="d-flex align-items-center">
           <div class="wrapper__img">
-            <!-- <img
-
-              alt="Vue logo"
-              src="../assets/yellow-circle.svg"
-              width="30"
-            /> -->
-            <img alt="Vue logo" src="../assets/parrot.svg" width="40" />
+            <img alt="" src="../assets/parrot.svg" width="40" />
           </div>
           <h3 class="mb-0 mt-0">Medium (8 cards)</h3>
         </div>
@@ -68,13 +56,7 @@
       >
         <div class="d-flex align-items-center">
           <div class="wrapper__img">
-            <!-- <img
-
-              alt="Vue logo"
-              src="../assets/pink-triangle.svg"
-              width="40"
-            /> -->
-            <img alt="Vue logo" src="../assets/elephant.svg" width="40" />
+            <img alt="" src="../assets/elephant.svg" width="40" />
           </div>
           <h3 class="mb-0 mt-0">Hard (12 cards)</h3>
         </div>
@@ -110,12 +92,6 @@ export default class ChooseDifficulty extends Vue {}
 ::v-deep .option:hover .inner {
   transform: rotateY(180deg);
 }
-
-// @for $i from 1 through 12 {
-//   .inner:nth-child(#{$i}) {
-//     transition-delay: ($i * .1s);
-//   }
-// }
 
 .option {
   border: 1px solid rgb(226, 226, 226);

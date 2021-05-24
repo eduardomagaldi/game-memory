@@ -73,14 +73,7 @@ function handleErrors(response: any) {
   return error;
 }
 
-interface Options {
-  headers: { [key: string]: string };
-  method: string;
-  mode: string;
-  credentials: string;
-}
-
-function getOptions(): Options {
+function getOptions(): RequestInit {
   return {
     headers: {
       Accept: "application/json",

@@ -9,9 +9,5 @@ export default new Vuex.Store({
   modules: {
     turns: turnsModule,
   },
-  actions: {
-    saveCurrentFullPath: function (context, fullPath): void {
-      localStorage.currentFullPath = fullPath;
-    },
-  },
+  actions: {},
 });

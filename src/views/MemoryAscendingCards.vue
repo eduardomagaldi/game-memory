@@ -50,11 +50,3 @@ export default class MemoryAscending extends Vue {
   }
 }
 </script>
-
-<style scoped lang="scss">
-// .flex-column {
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-// }
-</style>
