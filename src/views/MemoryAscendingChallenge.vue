@@ -6,7 +6,7 @@
 
     <ListCard :flipped="false" :showReset="true" :requestData="false" />
 
-    <button v-if="true" @click="reset()" class="btn">Reset</button>
+    <button v-if="true" @click="reset()" class="btn btn--reset">Reset</button>
   </div>
 </template>
 
