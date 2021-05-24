@@ -1,5 +1,4 @@
 const express = require("express");
-// const fs = require("fs");
 const path = require("path");
 const http = require("http");
 const helmet = require("helmet");
@@ -7,7 +6,6 @@ const app = express();
 const cors = require("cors");
 
 app.use(helmet());
-// app.use(bodyParser.json());
 
 const origin = "http://localhost:8080";
 
@@ -28,7 +26,10 @@ app.get("/api/cards/:numberOfCards", async function (req, res) {
 
   while (cardsValueSet.size < numberOfCards) {
     const value = Math.round(Math.random() * 100).toString();
-    cardsValueSet.add(value);
+
+    if (value < 100) {
+      cardsValueSet.add(value);
+    }
   }
 
   const array = Array.from(cardsValueSet);

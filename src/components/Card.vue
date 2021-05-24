@@ -35,7 +35,9 @@ export default class Card extends Vue {
   @Prop() private color!: string;
 
   onClick(): void {
-    this.$emit("click", this.card);
+    if (this.card && this.card.indexAnswer === undefined) {
+      this.$emit("click", this.card);
+    }
   }
 }
 </script>
@@ -91,6 +93,12 @@ export default class Card extends Vue {
 
 .front {
   background-color: #bbb;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: darken(#bbb, 5);
+  }
 }
 
 .back {
