@@ -101,7 +101,7 @@ export default class ChooseDifficulty extends Vue {}
 </script>
 
 <style scoped lang="scss">
-$blue: #6ccbdf;
+@import "@/styles/variables";
 
 .Difficulty {
   width: 100%;

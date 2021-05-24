@@ -11,7 +11,6 @@
       <div class="front face" @click="onClick">
         <template v-if="card">
           {{ card.indexAnswer !== undefined ? card.indexAnswer + 1 : "" }}
-          {{ card.value }}
         </template>
       </div>
       <div class="back face">

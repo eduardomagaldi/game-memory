@@ -14,11 +14,8 @@
 <style lang="scss">
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
 @import "~normalize.css/normalize.css";
-// @import url("normalize.css");
-// @import "@/styles/variables";
-// Required
-// require('@/assets/css/main.css')
-// import '';
+
+@import "@/styles/variables";
 
 html,
 body {
@@ -31,7 +28,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  // color: #2c3e50;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -102,8 +98,7 @@ ol {
 }
 
 .btn {
-  // background-color: blue;
-  background-color: lightblue;
+  background-color: $blue;
   border-radius: 300px;
   border: none;
   color: white;
@@ -113,7 +108,7 @@ ol {
   text-decoration: none;
 
   &:hover {
-    background-color: blue;
+    background-color: darken($blue, 30);
   }
 }
 </style>
