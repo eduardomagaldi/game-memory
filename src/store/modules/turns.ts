@@ -20,6 +20,11 @@ interface Context {
   state: State;
 }
 
+interface Resp {
+  card: CardType;
+  index: number;
+}
+
 export default {
   state: {
     turn: {},
@@ -41,7 +46,7 @@ export default {
     SET_INDEX_CURR(state: State, index: number): void {
       state.indexCurr = index;
     },
-    SET_INDEX_ANSWER(state: State, resp: any): void {
+    SET_INDEX_ANSWER(state: State, resp: Resp): void {
       const index = findInArray(state.turn.cards, resp.card);
 
       if (index !== null) {
@@ -78,7 +83,7 @@ export default {
       context.commit("SET_INDEX_CURR", index);
     },
 
-    setIndexAnswer: function (context: Context, resp: any): void {
+    setIndexAnswer: function (context: Context, resp: Resp): void {
       context.commit("SET_INDEX_ANSWER", resp);
     },
 

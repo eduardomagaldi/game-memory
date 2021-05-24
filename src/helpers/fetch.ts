@@ -52,6 +52,7 @@ async function deleteFetch(url: string, data: string): Promise<string | null> {
   return await parseBody(response);
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function handleErrors(response: any) {
   let error = false;
 
@@ -72,7 +73,14 @@ function handleErrors(response: any) {
   return error;
 }
 
-function getOptions(): any {
+interface Options {
+  headers: { [key: string]: string };
+  method: string;
+  mode: string;
+  credentials: string;
+}
+
+function getOptions(): Options {
   return {
     headers: {
       Accept: "application/json",
@@ -84,7 +92,9 @@ function getOptions(): any {
   };
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 async function parseBody(response: any) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const data = await response.json().catch((e: any) => {
     console.error("e", e);
   });
