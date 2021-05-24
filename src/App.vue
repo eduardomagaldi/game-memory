@@ -32,6 +32,7 @@ body {
   display: flex;
   flex-direction: column;
   padding: 40px 0;
+  line-height: 1.5;
 }
 
 .mt-0 {

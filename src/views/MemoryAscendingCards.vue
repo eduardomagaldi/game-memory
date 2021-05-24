@@ -30,7 +30,13 @@ export default class MemoryAscending extends Vue {
     10
   );
   private color: string = colorHelper.getColor(this.numberOfCards);
-  private flipped = true;
+  private flipped = false;
+
+  created(): void {
+    setTimeout(() => {
+      this.flipped = true;
+    }, 100);
+  }
 
   public onPlay(): void {
     this.flipped = false;
