@@ -14,7 +14,7 @@
           name: 'History',
         }"
       >
-        view history
+        🕑 view history
       </router-link>
     </small>
 
