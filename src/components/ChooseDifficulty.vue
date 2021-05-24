@@ -163,27 +163,15 @@ export default class ChooseDifficulty extends Vue {}
 
   &:hover {
     &.easy {
-      color: darken(#6ccbdf, 10);
-      background-color: lighten(#6ccbdf, 20);
-
-      .wrapper__img {
-      }
+      background-color: lighten(#6ccbdf, 30);
     }
 
     &.medium {
-      color: darken(#ffbd19, 10);
-      background-color: lighten(#ffbd19, 30);
-
-      .wrapper__img {
-      }
+      background-color: lighten(#ffbd19, 40);
     }
 
     &.hard {
-      color: darken(#ef0365, 0);
-      background-color: lighten(#ef0365, 45);
-
-      .wrapper__img {
-      }
+      background-color: lighten(#ef0365, 50);
     }
   }
 }

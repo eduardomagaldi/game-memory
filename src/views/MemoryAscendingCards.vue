@@ -10,7 +10,7 @@
       :color="color"
     />
 
-    <button class="btn--play" @click="onPlay">Play -></button>
+    <button class="btn btn--play" @click="onPlay">PLAY -></button>
   </div>
 </template>
 

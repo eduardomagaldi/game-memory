@@ -1,6 +1,11 @@
 <template>
   <div id="app">
-    <a href="/"><h1 class="mt-0">Lepaya - Memory Game (Ascending)</h1></a>
+    <a href="/">
+      <h1 class="mt-0 d-flex align-items-center justify-content-center">
+        <img alt="Lepaya" src="./assets/lepaya.png" height="50" class="mr-1" />
+        Memory Game (Ascending)
+      </h1>
+    </a>
 
     <router-view />
   </div>
@@ -33,19 +38,6 @@ body {
   padding: 40px 0;
 }
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
-
 .mt-0 {
   margin-top: 0 !important;
 }
@@ -66,16 +58,23 @@ body {
   align-items: center !important;
 }
 
+.justify-content-center {
+  justify-content: center !important;
+}
+
 * {
   box-sizing: border-box;
 }
 
-h2 {
-  // background: yellow;
+a {
+  text-decoration: none;
 }
 
-small {
-  // background: gold;
+h1,
+h2,
+h3 {
+  font-weight: bold;
+  color: black;
 }
 
 .wrapper__app {
@@ -89,10 +88,27 @@ small {
   flex-direction: column;
   width: 100%;
   padding: 40px;
+
+  background-color: rgb(240, 240, 240);
 }
 
 ul,
 ol {
   text-align: left;
+}
+
+.btn {
+  background-color: blue;
+  border-radius: 300px;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  transition: background-color 0.3s;
+  cursor: pointer;
+  text-decoration: none;
+
+  &:hover {
+    background-color: lightblue;
+  }
 }
 </style>

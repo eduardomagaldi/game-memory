@@ -20,25 +20,29 @@ app.use(
   })
 );
 
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", origin);
-  next();
-});
+// app.use(function (req, res, next) {
+//   res.header("Access-Control-Allow-Origin", origin);
+//   next();
+// });
 
 app.use(express.static("dist"));
 
 app.get("/api/cards/:numberOfCards", async function (req, res) {
-  const cardsByValue = {}; // using an object to prevent cards with same values
+  const cardsValueSet = new Set();
   const numberOfCards = parseInt(req.params.numberOfCards, 10);
 
-  while (Object.keys(cardsByValue)?.length < numberOfCards) {
+  while (cardsValueSet.size < numberOfCards) {
     const value = Math.round(Math.random() * 100).toString();
-    cardsByValue[value] = {
-      value,
-    };
+    cardsValueSet.add(value);
   }
 
-  res.json(Object.values(cardsByValue));
+  const array = Array.from(cardsValueSet);
+
+  const newArray = array.map((val) => {
+    return { value: val };
+  });
+
+  res.json(newArray);
 });
 
 app.get("*", function (req, res) {

@@ -38,9 +38,9 @@ export default class ListCard extends Vue {
   @Prop() private flipped!: boolean;
   @Prop() private forceTurn!: boolean;
   @Prop({ default: false }) private showReset!: boolean;
+  @Prop({ default: true }) private requestData!: boolean;
   @Prop() private color!: string;
 
-  private cards: CardType[] = [];
   private numberOfCards: number = parseInt(
     this.$route?.params?.numberOfCards,
     10
@@ -48,18 +48,31 @@ export default class ListCard extends Vue {
   private indexCurr = 0;
   private fail = false;
 
+  get cards(): CardType[] {
+    return this.$store.state.turns?.turn?.cards;
+  }
+
   async created(): Promise<void> {
-    let cards: CardType[] = this.$store.state.turns?.turn?.cards;
-
-    if (!cards || this.forceTurn) {
-      cards = await this.$store.dispatch("getCards", this.numberOfCards);
-    }
-
-    this.cards = cards;
-
     if (this.numberOfCards > 12) {
-      throw new Error();
+      throw new Error("numberOfCards too high");
     }
+
+    if (!this.cards) {
+      if (this.requestData) {
+        await this.$store.dispatch("getCards", this.numberOfCards);
+      } else {
+        this.$router.push({
+          name: "MemoryAscendingCards",
+          params: { numberOfCards: this.numberOfCards.toString() },
+        });
+      }
+    }
+
+    // if (this.requestData) {
+    //   if (!this.cards) {
+    //
+    //   }
+    // }
   }
 
   onClick(card: CardType): void {

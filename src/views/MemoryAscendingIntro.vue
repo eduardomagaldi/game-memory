@@ -24,6 +24,7 @@
           numberOfCards,
         },
       }"
+      class="btn"
     >
       Go to cards -->
     </router-link>
@@ -31,25 +32,13 @@
 </template>
 
 <script lang="ts">
-// this.$route.params.clientId
-
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Vue } from "vue-property-decorator";
 
 @Component
 export default class MemoryAscending extends Vue {
-  // @Prop() private msg!: string;
-
   private numberOfCards: number = parseInt(
     this.$route?.params?.numberOfCards,
     10
   );
-
-  // const clientId: number = this.$route?.params?.numberOfCards;
-
-  // numberOfCards: number = parseInt(this.$route?.params?.numberOfCards, 10);
-
-  created(): boolean {
-    return true;
-  }
 }
 </script>

@@ -1,4 +1,4 @@
-import { Vue } from 'vue-property-decorator';
+import { Vue } from "vue-property-decorator";
 import { CardType } from "@/common/interfaces";
 import fetch from "@/helpers/fetch";
 
@@ -30,7 +30,7 @@ export default {
       return true;
     },
     SET_INDEX(state: State, card: CardType, index: number): void {
-      Vue.delete(card, 'indexSelected');
+      Vue.delete(card, "indexSelected");
     },
   },
   actions: {
@@ -38,24 +38,18 @@ export default {
       context: Context,
       numberOfCards: number
     ): Promise<CardType[]> {
-      const a: CardType[] = await fetch.get(`/api/cards/${numberOfCards}`);
+      const cards: CardType[] = await fetch.get(`/api/cards/${numberOfCards}`);
 
-      context.commit("SET_TURN", a);
+      context.commit("SET_TURN", cards);
 
       return new Promise((resolve) => {
-        resolve(a);
+        resolve(cards);
       });
     },
     resetIndexes: async function (
       context: Context,
-      numberOfCards: number,
+      numberOfCards: number
     ): Promise<CardType[]> {
-
-      // Vue.set(selected, "indexSelected", this.indexCurr);
-      // console.log('resetIndexes');
-
-      console.log("context", context);
-
       context.state.turn.cards.forEach((card: CardType) => {
         context.commit("SET_INDEX", card);
       });

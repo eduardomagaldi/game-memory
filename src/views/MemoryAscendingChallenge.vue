@@ -4,9 +4,9 @@
 
     <small>Click on the cards in ascending order.</small>
 
-    <ListCard :flipped="false" :showReset="true" />
+    <ListCard :flipped="false" :showReset="true" :requestData="false" />
 
-    <button v-if="true" @click="reset()">Reset</button>
+    <button v-if="true" @click="reset()" class="btn">Reset</button>
   </div>
 </template>
 
