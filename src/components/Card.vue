@@ -56,7 +56,6 @@ export default class Card extends Vue {
 @for $i from 1 through 12 {
   .Card:nth-child(#{$i}) .inner {
     transition-delay: ($i * 0.05s);
-    // opacity: 0.3;
   }
 }
 
@@ -67,16 +66,7 @@ export default class Card extends Vue {
   text-align: center;
   transition: transform 0.8s;
   transform-style: preserve-3d;
-  // transition-delay: 1s;
 }
-
-// .btn--select {
-//   position: absolute;
-//   width: 100%;
-//   height: 100%;
-//   top: 0;
-//   left: 0;
-// }
 
 .Card--flipped .inner {
   transform: rotateY(180deg);

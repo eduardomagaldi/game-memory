@@ -137,6 +137,10 @@ export default class ChooseDifficulty extends Vue {}
     border-radius: 0 0 5px 5px;
   }
 
+  h3 {
+    color: inherit;
+  }
+
   &.easy {
     color: darken(#6ccbdf, 10);
 

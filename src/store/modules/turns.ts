@@ -15,8 +15,9 @@ interface State {
 }
 
 interface Context {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   commit: any;
-  state: any;
+  state: State;
 }
 
 export default {
@@ -35,9 +36,6 @@ export default {
     SET_FAIL(state: State, result: boolean): void {
       state.fail = result;
     },
-    SET_INDEX(state: State, card: CardType, index: number): void {
-      Vue.delete(card, "indexAnswer");
-    },
     SET_INDEX_CURR(state: State, index: number): void {
       state.indexCurr = index;
     },
@@ -47,6 +45,9 @@ export default {
       if (index !== null) {
         Vue.set(state.turn.cards[index], "indexAnswer", resp.index);
       }
+    },
+    UNSET_INDEX_ANSWER(state: State, card: CardType): void {
+      Vue.delete(card, "indexAnswer");
     },
   },
   actions: {
@@ -65,7 +66,7 @@ export default {
 
     resetAllIndexes: async function (context: Context): Promise<null> {
       context.state.turn.cards.forEach((card: CardType) => {
-        context.commit("SET_INDEX", card);
+        context.commit("UNSET_INDEX_ANSWER", card);
       });
 
       return null;
@@ -85,9 +86,11 @@ export default {
   },
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function findInArray(array: any[], itemSearch: any) {
   let index = null;
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   array.every((item: any, i: number) => {
     if (itemSearch === item) {
       index = i;

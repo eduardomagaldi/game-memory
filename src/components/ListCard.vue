@@ -34,8 +34,7 @@ import Card from "@/components/Card.vue";
   },
 })
 export default class ListCard extends Vue {
-  @Prop() private flipped!: boolean;
-  @Prop() private forceTurn!: boolean;
+  @Prop({ default: false }) private flipped!: boolean;
   @Prop({ default: false }) private showReset!: boolean;
   @Prop({ default: true }) private requestData!: boolean;
   @Prop() private color!: string;
