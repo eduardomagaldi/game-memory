@@ -1,6 +1,6 @@
 import { CardType } from "@/common/interfaces";
 
-const apiUrl = "http://localhost:8081";
+const apiUrl = "http://52.67.116.64/";
 
 declare global {
   interface Window {
