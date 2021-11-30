@@ -38,5 +38,20 @@
     "> 1%",
     "last 2 versions",
     "not dead"
-  ]
+  ],
+  "description": "Candidate: Eduardo Magaldi",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eduardomagaldi/game-memory.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eduardomagaldi/game-memory/issues"
+  },
+  "homepage": "https://github.com/eduardomagaldi/game-memory#readme"
 }
