@@ -1,8 +1,5 @@
 // const express = require("express")
 const express = require('express')
-
-console.log("express", express)
-
 const path = require("path");
 const http = require("http");
 const helmet = require("helmet");
@@ -11,18 +8,16 @@ const cors = require("cors");
 
 app.use(helmet());
 
-const origin = "http://localhost:8080";
+// const origin = //"http://localhost:8080";
 
-app.use(
-  cors({
-    origin,
-    credentials: true,
-    exposedHeaders: "Location",
-    optionsSuccessStatus: 200,
-  })
-);
-
-app.use(express.static("dist"));
+// app.use(
+//   cors({
+//     origin,
+//     credentials: true,
+//     exposedHeaders: "Location",
+//     optionsSuccessStatus: 200,
+//   })
+// );
 
 app.get("/api/cards/:numberOfCards", async function (req, res) {
   const cardsValueSet = new Set();
@@ -44,6 +39,8 @@ app.get("/api/cards/:numberOfCards", async function (req, res) {
 
   res.json(newArray);
 });
+
+app.use(express.static("dist"));
 
 app.get("*", function (req, res) {
   res.sendFile(path.join(__dirname, "../dist", "index.html"));
